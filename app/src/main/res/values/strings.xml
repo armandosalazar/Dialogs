@@ -4,7 +4,8 @@
     <string name="date">Date Dialog</string>
     <string name="time">Time Dialog</string>
     <string name="resp">Dialog response</string>
-    <string name="calendar">Calendar Dialog</string>
+    <string name="calendar_dialog">Calendar Dialog</string>
+    <string name="calendar">Calendar</string>
     <string name="personal">Personal Dialog</string>
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
