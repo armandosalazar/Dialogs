@@ -42,9 +42,10 @@
         android:text="@string/time" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtResp"
+        android:id="@+id/textInputLayoutResponse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:hint="@string/resp">
 
         <com.google.android.material.textfield.TextInputEditText
