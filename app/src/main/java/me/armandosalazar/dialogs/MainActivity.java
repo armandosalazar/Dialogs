@@ -5,7 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -38,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnAlert).setOnClickListener(v -> showAlertDialog());
         findViewById(R.id.btnDate).setOnClickListener(v -> showDatePickerDialog());
         findViewById(R.id.btnTime).setOnClickListener(v -> showTimePickerDialog());
+        findViewById(R.id.btnCalendar).setOnClickListener(v -> showCalendar());
+        findViewById(R.id.btnPersonal).setOnClickListener(v -> showPersonalDialog());
     }
 
 
@@ -73,5 +80,42 @@ public class MainActivity extends AppCompatActivity {
             textInputLayoutResponse.getEditText().setText(this.hour + ":" + this.minute);
         }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false);
         timePickerDialog.show();
+    }
+
+    private void showCalendar() {
+        Intent intent = new Intent(this, CalendarActivity.class);
+        startActivity(intent);
+    }
+
+    private void showPersonalDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Datos personales");
+        View view = getLayoutInflater().inflate(R.layout.personal_dialog, null);
+
+        ((TextView) view.findViewById(R.id.message)).setText("¿Acepta los términos y condiciones?");
+        ((Button) view.findViewById(R.id.btnAcceptDialog)).setText("Sí");
+        ((Button) view.findViewById(R.id.btnDeclineDialog)).setText("No");
+
+        builder.setView(view);
+        AlertDialog alertDialog = builder.create();
+
+        view.findViewById(R.id.btnAcceptDialog).setOnClickListener(v -> {
+            textInputLayoutResponse.getEditText().setText("Se aceptó");
+            Toast.makeText(this, "Se aceptó", Toast.LENGTH_SHORT).show();
+            alertDialog.dismiss();
+        });
+        view.findViewById(R.id.btnDeclineDialog).setOnClickListener(v -> {
+            textInputLayoutResponse.getEditText().setText("Se declinó");
+            Toast.makeText(this, "Se declinó", Toast.LENGTH_SHORT).show();
+            alertDialog.dismiss();
+        });
+        view.findViewById(R.id.btnCancelDialog).setOnClickListener(v -> {
+            textInputLayoutResponse.getEditText().setText("Se canceló");
+            Toast.makeText(this, "Se canceló", Toast.LENGTH_SHORT).show();
+            alertDialog.dismiss();
+        });
+
+        alertDialog.show();
     }
 }
