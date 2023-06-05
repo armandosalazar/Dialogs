@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Dialogs</string>
+    <string name="alert">Alert Dialog</string>
+    <string name="date">Date Dialog</string>
+    <string name="time">Time Dialog</string>
+    <string name="resp">Dialog response</string>
+    <string name="calendar">Calendar Dialog</string>
+    <string name="personal">Personal Dialog</string>
+    <string name="accept">Accept</string>
+    <string name="cancel">Cancel</string>
+    <string name="decline">Decline</string>
+</resources>
